@@ -16,7 +16,7 @@ pool:
 steps:
 
 - task: Bash@3
-  displayName: 'AppleIGC'
+  displayName: 'AppleIGC Basic Dependency'
   inputs:
     targetType: 'inline'
     script: |
@@ -28,11 +28,8 @@ steps:
       cp -r ../MacKernelSDK .
       xcodebuild -configuration Debug > /dev/null 2>&1
       xcodebuild -configuration Release > /dev/null 2>&1
-      mkdir -p ../release/AppleIGC/Debug
-      mkdir -p ../release/AppleIGC/Release
-      cp -Rf build/Debug/*.kext ../release/AppleIGC/Debug
-      cp -Rf build/Release/*.kext ../release/AppleIGC/Release
-      cd ../
+      cd ..
+      cp AppleIGC/build/*/*.zip release/AppleIGC/
 
 
 - task: Bash@3
