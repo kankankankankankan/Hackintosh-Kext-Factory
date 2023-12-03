@@ -34,4 +34,4 @@ jobs:
           keep_latest: 1         #保留多少个发布不删除
           delete_tags: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
