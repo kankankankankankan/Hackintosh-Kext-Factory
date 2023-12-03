@@ -11,6 +11,8 @@
 
 name: delete
 on:
+   push:
+    branches: [ main ]
    schedule:
     - cron: 0 */8 * * *
 
@@ -19,7 +21,6 @@ jobs:
     runs-on: Ubuntu-20.04
     name: delete-workflow-runs
     steps:
-    
       - name: 删除在github空间的老固件
         uses: Mattraks/delete-workflow-runs@main
         with:
