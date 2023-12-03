@@ -14,6 +14,27 @@ pool:
   vmImage: 'macOS-latest'
 
 steps:
+
+- task: Bash@3
+  displayName: 'AppleIGC'
+  inputs:
+    targetType: 'inline'
+    script: |
+      #!/bin/bash
+      echo "==========================================================================="
+      echo "==========================> Building AppleIGC <============================="
+      echo "==========================================================================="
+      git clone -q https://github.com/SongXiaoXi/AppleIGC.git && cd AppleIGC
+      cp -r ../MacKernelSDK .
+      xcodebuild -configuration Debug > /dev/null 2>&1
+      xcodebuild -configuration Release > /dev/null 2>&1
+      mkdir -p ../release/AppleIGC/Debug
+      mkdir -p ../release/AppleIGC/Release
+      cp -Rf build/Debug/*.kext ../release/AppleIGC/Debug
+      cp -Rf build/Release/*.kext ../release/AppleIGC/Release
+      cd ../
+
+
 - task: Bash@3
   displayName: 'Lilu Basic Dependency'
   inputs:
