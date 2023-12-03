@@ -31,7 +31,7 @@ jobs:
       - name: 删除自动发布的老固件
         uses: dev-drprasad/delete-older-releases@v0.1.0
         with:
-          keep_latest: 1         #保留多少个发布不删除
+          keep_latest: 2         #保留多少个发布不删除
           delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
